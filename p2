@@ -1,0 +1,16 @@
+import smtplib
+from emailmine.multipart import MIMEMULTIPART
+from email_mime.Text import MIMEText
+smtpserver='smtp.gmail.com'
+smtpPart = 587
+Unme="XYZ210@gmail.com"
+psw="11101"
+msg=MIMEMultipart()
+msg['from']=Uname
+msg['TO']= 'abc@gmail.com'
+msg['subject']='Test mail'
+body='This is a test mail sent from a python script'
+msg.attach(MIMEText(body,'plain'))
+try:
+    ser=sentplib(smtpserver,smtppart)
+    ser.start
