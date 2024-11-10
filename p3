@@ -1,0 +1,32 @@
+import numpy as np
+import matplotlib.pyplot as plb
+
+def CMP(prin, annu_r, years):
+    r=annu_r/12/100
+    n=years*12
+    M=prin*(r*(1+r)**n)/((1+r)**n-1)
+    return M
+def PMS(prin, annu_r, years):
+    mon_pay=CMP(prin, annu_r,years)
+    months=np.arange(1,years*12+1)
+    bals=[]
+    bal=prin
+    r=annu_r/12/100
+    for _ in months:
+        i_pay = bal*r
+        prin_pay=mon_pay-i_pay
+        bal=prin_pay
+        bals.append(bal)
+    plb_plot(months, bals,label="Remaining balance")
+    plb.xlabel("Months")
+    plb.ylabel("Remaining bal")
+    plb.title("mortgage bal over time");
+    plb.grid()
+    plb.legend()
+    plb.show()
+
+prin=300000
+annu_r=3.5
+years=30
+PMS(prin, annu_r,years)
+        
